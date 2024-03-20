@@ -1,12 +1,15 @@
-function calculate(birthday) {
-    let today = new Date();
-    let birthDate = new Date(birthday)
-        age = today - birthDate
-        if(age < 0 || age === NaN){
-            alert(`Введите корректное значение`)
-        }
-        return Math.floor(age / (1000 * 60 * 60 * 24 * 30 * 12))
-        
-    }
-    let birthday = ('2025.11.05')
-    calculate(birthday)
+let currentDate = new Date();
+let usersDate = Date.parse('02 Dec 2007 00:12:00 GMT');
+function finalCountdown(currentDate, usersDate) {
+
+    let timeleft = currentDate - usersDate;
+    let years = Math.floor(timeleft / (1000 * 60 * 60 * 24 * 30 * 12));
+    let months = Math.floor(timeleft / (1000 * 60 * 60 * 24 * 30) % 12);
+    let days = Math.floor(timeleft / (1000 * 60 * 60 * 24) % 30);
+    let hours = Math.floor((timeleft / (1000 * 60 * 60)) % 24);
+    let minutes = Math.floor((timeleft / (1000 * 60)) % 60);
+    let seconds = Math.floor((timeleft / 1000) % 60);
+
+    return console.log(`Time Left: ${years} : ${months} :${days} :${hours} :${minutes} :${seconds} :`)
+ }
+finalCountdown(currentDate, usersDate)
