@@ -1,15 +1,14 @@
-let currentDate = new Date();
-let usersDate = Date.parse('02 Dec 2007 00:12:00 GMT');
-function finalCountdown(currentDate, usersDate) {
+function calculateAge(birthday) {
+    const today = new Date();
+    const birthDate = new Date(birthday);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
 
-    let timeleft = currentDate - usersDate;
-    let years = Math.floor(timeleft / (1000 * 60 * 60 * 24 * 30 * 12));
-    let months = Math.floor(timeleft / (1000 * 60 * 60 * 24 * 30) % 12);
-    let days = Math.floor(timeleft / (1000 * 60 * 60 * 24) % 30);
-    let hours = Math.floor((timeleft / (1000 * 60 * 60)) % 24);
-    let minutes = Math.floor((timeleft / (1000 * 60)) % 60);
-    let seconds = Math.floor((timeleft / 1000) % 60);
-
-    return console.log(`Time Left: ${years} : ${months} :${days} :${hours} :${minutes} :${seconds} :`)
- }
-finalCountdown(currentDate, usersDate)
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+const userBirthday = "1999-01-01";
+const userAge = calculateAge(userBirthday);
+console.log("Возраст:", userAge);
